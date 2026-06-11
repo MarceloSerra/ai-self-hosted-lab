@@ -153,6 +153,60 @@ opencode
 
 Available for macOS, Windows, and Linux. Download from [opencode.ai/download](https://opencode.ai/download).
 
+### Installed Skills
+
+Skills extend opencode with specialized workflows. These are the skills currently installed:
+
+#### Process & Workflow Skills
+
+| Skill | Purpose | Source |
+|-------|---------|--------|
+| `brainstorming` | Explore requirements before any creative work or feature implementation | superpowers |
+| `test-driven-development` | Write tests before implementation code | superpowers |
+| `systematic-debugging` | Structured bug investigation before proposing fixes | superpowers |
+| `writing-plans` | Create implementation plans for multi-step tasks before touching code | superpowers |
+| `executing-plans` | Execute written plans with review checkpoints | superpowers |
+| `subagent-driven-development` | Delegate independent tasks to parallel subagents | superpowers |
+| `dispatching-parallel-agents` | Spawn multiple agents for independent work | superpowers |
+| `verification-before-completion` | Run verification commands before claiming work is done | superpowers |
+| `finishing-a-development-branch` | Guide completion: merge, PR, or cleanup decisions | superpowers |
+
+#### Code Review Skills
+
+| Skill | Purpose | Source |
+|-------|---------|--------|
+| `requesting-code-review` | Request review when completing tasks or before merging | superpowers |
+| `receiving-code-review` | Evaluate review feedback critically before implementing suggestions | superpowers |
+
+#### Domain-Specific Skills
+
+| Skill | Purpose | Source |
+|-------|---------|--------|
+| `cloudflare` | Cloudflare Workers, Pages, KV/D1/R2, AI, WAF, Terraform | ~/.config/opencode/skills/ |
+| `frontend-design` | Visual design guidance for distinctive UI | ~/.config/opencode/skills/ |
+| `mcp-builder` | Create MCP servers to integrate external APIs with LLMs | ~/.config/opencode/skills/ |
+| `webapp-testing` | Playwright-based browser testing and debugging | ~/.config/opencode/skills/ |
+| `vercel-react-best-practices` | React/Next.js performance optimization guidelines | ~/.config/opencode/skills/ |
+| `composio` | Integrate 1000+ external apps via Composio SDK | superpowers |
+
+#### Utility Skills
+
+| Skill | Purpose | Source |
+|-------|---------|--------|
+| `using-superpowers` | Establishes how to find and use skills (loaded automatically) | superpowers |
+| `using-git-worktrees` | Create isolated workspaces for feature development | superpowers |
+| `stop-slop` | Remove AI writing patterns from prose | ~/.agents/skills/ |
+| `skill-creator` | Create new skills, modify existing ones, run performance evals | ~/.config/opencode/skills/ |
+| `writing-skills` | Author and verify custom skills before deployment | superpowers |
+| `customize-opencode` | Configure opencode itself (opencode.json, agents, plugins, MCP) | built-in |
+
+### Skill Loading Behavior
+
+Skills are invoked automatically when the task matches their description. The rule: if there's even a 1% chance a skill applies, it must be loaded. Priority order:
+
+1. Process skills first (brainstorming, debugging) — determine **how** to approach
+2. Implementation skills second (frontend-design, mcp-builder) — guide execution
+
 ---
 
 ## Node.js + Express
