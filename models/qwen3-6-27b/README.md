@@ -20,11 +20,30 @@ This model is significantly larger than Ministral 3B. With the RX 9070 XT's 16GB
 
 **Recommendation:** Use Q4_K_M GGUF format for best balance of quality vs. VRAM usage.
 
-## Server Configuration
+## LM Studio Server Parameters
 
-- **Port:** 3001 (avoids conflict with Ministral's port 3000)
-- **LM Studio:** `http://localhost:1234/v1/chat/completions`
-- **Expected TTFT:** Higher than smaller models due to parameter count
+These are the exact server settings used for this model. Documenting these ensures reproducible benchmarks across sessions.
+
+| Parameter | Value | Notes |
+|-----------|-------|-------|
+| Context Length | 32760 (of 262144 max) | Reduced from native to fit VRAM; 32K is plenty for coding tasks |
+| GPU Offload Layers | 64 | Max layers that fit in 16GB VRAM with Q4_K_M quantization |
+| CPU Thread Pool Size | 16 | Matches host CPU cores for offloaded layers |
+| Evaluation Batch Size | 512 | Prompts processed per batch during prefill |
+| Physical Batch Size | 512 | Tokens processed per batch during generation |
+| Max Concurrent Predictions | 4 | Simultaneous requests the server handles |
+| Unified KV Cache | Off | Separate K/V caches for better quantization control |
+| RoPE Frequency Base | Auto | Model default (typically 1e6 for Qwen) |
+| RoPE Frequency Scale | Auto | Model default; auto-scales for extended context |
+| Offload KV Cache to GPU Memory | On | Keeps attention cache in VRAM for faster generation |
+| Keep Model in Memory | Off | Frees VRAM when server is idle; reloads on next request |
+| Try mmap() | On | Memory-maps model file for faster loading, less RAM pressure |
+| Seed | Random (off) | No fixed seed — results vary between runs |
+| Flash Attention | On | Required for performance with large context windows |
+| K Cache Quantization Type | Q8_0 | 8-bit quantized K cache saves ~50% VRAM vs. f32 |
+| V Cache Quantization Type | Q8_0 | 8-bit quantized V cache — minimal quality loss, huge VRAM savings |
+
+See `docs/lm-studio-server-config.md` for parameter explanations and tuning guide.
 
 ## Endpoints
 
