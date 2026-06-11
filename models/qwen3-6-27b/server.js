@@ -5,7 +5,7 @@ app.use(express.json());
 
 // LM Studio API configuration
 const LM_STUDIO_URL = 'http://localhost:1234/v1/chat/completions';
-const PORT = 3000;
+const PORT = 3001;
 
 /**
  * Chat endpoint - proxies to LM Studio with timing metrics
@@ -33,7 +33,7 @@ app.post('/api/chat', async (req, res) => {
     });
 
     const data = await response.json();
-    const ttft = Date.now() - startTime; // Time to first token (approx)
+    const ttft = Date.now() - startTime;
 
     res.json({
       response: data.choices?.[0]?.message?.content || 'No response',
@@ -57,14 +57,13 @@ app.post('/api/chat', async (req, res) => {
  * Simple greeting endpoint (baseline test)
  */
 app.get('/api/greet', (req, res) => {
-  res.json({ message: 'Hello Self-Hosted AI' });
+  res.json({ message: 'Hello Self-Hosted AI - Qwen3.6 27B' });
 });
 
 /**
  * Benchmark results endpoint
  */
 app.get('/api/benchmarks', async (req, res) => {
-  // Run a quick benchmark test
   const tasks = [
     { name: 'greeting', prompt: 'Say hello in one sentence.' },
     { name: 'code', prompt: 'Write a Python function to calculate fibonacci up to n terms.' }
@@ -110,7 +109,7 @@ app.get('/api/benchmarks', async (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Qwen3.6 27B Server running on http://localhost:${PORT}`);
   console.log('Endpoints:');
   console.log('  POST /api/chat       - Chat with LM Studio model');
   console.log('  GET  /api/greet      - Simple greeting test');

@@ -1,0 +1,30 @@
+{
+  "name": "self-hosted-ai-hw-agent",
+  "description": "Agent config for Self-Hosted AI Hello World benchmarking project",
+  "model": {
+    "provider": "openai-compatible",
+    "url": "http://localhost:1234/v1",
+    "apiKey": "not-needed"
+  },
+  "instructions": [
+    "You are assisting with a self-hosted AI benchmarking project.",
+    "Each model gets its own Node.js app under models/<model-name>/.",
+    "LM Studio serves at http://localhost:1234/v1/chat/completions (OpenAI-compatible API).",
+    "Follow the existing patterns in docs/ for structure and documentation.",
+    "When creating new model apps, use server.js template that calls LM Studio API with timing metrics.",
+    "Always update docs/experience-log.md with findings.",
+    "Hardware: AMD RX 9070 XT (16GB VRAM) on host, MacBook Air M3 on client."
+  ],
+  "tools": {
+    "lmstudio": {
+      "url": "https://lmstudio.ai",
+      "docs": "https://lmstudio.ai/docs",
+      "api": "http://localhost:1234/v1"
+    },
+    "opencode": {
+      "url": "https://opencode.ai",
+      "docs": "https://opencode.ai/docs",
+      "github": "https://github.com/anomalyco/opencode"
+    }
+  }
+}
