@@ -104,6 +104,27 @@ See `docs/hardware.md` for full specs and LLM capacity analysis.
 | opencode | AI coding agent | `curl -fsSL https://opencode.ai/install \| bash` | [Docs](https://opencode.ai/docs) · [GitHub](https://github.com/anomalyco/opencode) |
 | Node.js + Express | App framework | `npm install express node-fetch` | [Node.js](https://nodejs.org) · [Express](https://expressjs.com) |
 
+### OpenCode Plugins Installed
+
+See [`docs/opencode-setup.md`](docs/opencode-setup.md) for complete plugin documentation.
+
+| Plugin | Purpose |
+|--------|---------|
+| Dynamic Context Pruning | Reduce token usage by pruning stale context |
+| Opencode Mem | Persistent memory across sessions |
+| Envsitter Guard | Protect `.env` files and secrets from agent access |
+| Oh My Opencode Slim | Lightweight agent orchestration & background tasks |
+| OpenCode Worktree | Isolated Git worktree-based coding sessions |
+| Opencode Notify | Native OS notifications on task completion |
+| Daytona Sandbox | Run agents in isolated remote sandboxes |
+
+### MCP Servers Configured
+
+| Server | Purpose | Status |
+|--------|---------|--------|
+| Context7 | Fresh library docs & code examples | ✅ Active |
+| Composio | Connect to 1,000+ external apps (GitHub, Linear, Jira, Slack) | ⚠️ Requires OAuth auth (`opencode mcp auth composio`) |
+
 ## What NOT to Do
 
 - ❌ Don't create apps that don't actually call LM Studio API (static responses only)

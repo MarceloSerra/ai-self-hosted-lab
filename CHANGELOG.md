@@ -5,7 +5,9 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
-- Project initialization with Ministral 3B baseline app
+- Comprehensive OpenCode plugins documentation (`docs/opencode-setup.md`) covering all installed plugins, MCP servers, skills, and installation guides
+- Installed 8 OpenCode plugins: Dynamic Context Pruning, Opencode Mem, Envsitter Guard, Oh My Opencode Slim, OpenCode Worktree, Opencode Notify, Daytona Sandbox
+- Added Composio MCP server for connecting to 1,000+ external apps (requires manual OAuth authentication)
 - Qwen3.6 27B model test app (`models/qwen3-6-27b/`) — port 3001, benchmarks pending
 - Comprehensive documentation structure:
   - `docs/hardware.md` - RX 9070 XT specs & LLM capacity analysis
