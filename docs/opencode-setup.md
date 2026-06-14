@@ -546,6 +546,15 @@ opencode
 ## Resources
 
 - **OpenCode Docs:** [opencode.ai/docs](https://opencode.ai/docs)
+- **[⭐️ Awesome OpenCode](https://github.com/awesome-opencode/awesome-opencode)** — Curated list of plugins, themes, agents, projects, and resources (7.9k stars, 251 commits)
 - **OpenCode Plugins Guide:** [How to Add MCP to OpenCode](https://opencode.ai/docs/plugins)
-- **Awesome OpenCode:** Curated list of plugins, themes, agents, and resources
 - **Composio Blog Source:** [Best OpenCode Plugins](https://composio.dev/content/best-opencode-plugins)
+
+### Awesome OpenCode Categories
+
+The awesome-opencode repo organizes resources into:
+- **Plugins** — Agent identity, memory, context management, security, notifications
+- **Themes** — Visual customization for terminal UI
+- **Agents** — Pre-built agent configurations and workflows
+- **Projects** — Example projects using OpenCode
+- **Resources** — Guides, tutorials, and community content
